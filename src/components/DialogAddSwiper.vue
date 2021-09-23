@@ -40,9 +40,9 @@
 
 <script>
 import { reactive, ref, toRefs } from 'vue'
-import axios from '@/utils/axios'
-import { localGet, uploadImgServer, hasEmoji } from '@/utils'
 import { ElMessage } from 'element-plus'
+import { localGet, uploadImgServer, hasEmoji } from '@/utils'
+// import axios from '@/utils/axios'
 
 export default {
   name: 'DialogAddSwiper',

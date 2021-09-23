@@ -28,6 +28,7 @@
 <script>
 import { onMounted, reactive, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
+
 export default {
   name: 'Introduce',
   setup() {

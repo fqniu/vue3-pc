@@ -73,7 +73,8 @@
 <script>
 import { onMounted, reactive, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
-import axios from '@/utils/axios'
+// import axios from '@/utils/axios'
+
 export default {
   name: 'OrderDetail',
   setup() {

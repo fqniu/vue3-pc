@@ -80,7 +80,8 @@ import { onMounted, onUnmounted, reactive, ref, toRefs } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import DialogAddCategory from '@/components/DialogAddCategory.vue'
-import axios from '@/utils/axios'
+// import axios from '@/utils/axios'
+
 export default {
   name: 'Category',
   components: {

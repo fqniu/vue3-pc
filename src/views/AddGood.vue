@@ -61,11 +61,12 @@
 
 <script>
 import { reactive, ref, toRefs, onMounted, onBeforeUnmount, getCurrentInstance } from 'vue'
-import WangEditor from 'wangeditor'
-import axios from '@/utils/axios'
-import { ElMessage } from 'element-plus'
 import { useRoute, useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
+import WangEditor from 'wangeditor'
 import { localGet, uploadImgServer, uploadImgsServer, hasEmoji } from '@/utils'
+// import axios from '@/utils/axios'
+
 export default {
   name: 'AddGood',
   setup() {

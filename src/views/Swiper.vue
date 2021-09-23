@@ -86,7 +86,8 @@
 import { onMounted, reactive, ref, toRefs } from 'vue'
 import { ElMessage } from 'element-plus'
 import DialogAddSwiper from '@/components/DialogAddSwiper.vue'
-import axios from '@/utils/axios'
+// import axios from '@/utils/axios'
+
 export default {
   name: 'Swiper',
   components: {

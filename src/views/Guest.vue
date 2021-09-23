@@ -83,8 +83,9 @@
 
 <script>
 import { onMounted, reactive, ref, toRefs } from 'vue'
-import axios from '@/utils/axios'
 import { ElMessage } from 'element-plus'
+// import axios from '@/utils/axios'
+
 export default {
   name: 'Guest',
   setup() {

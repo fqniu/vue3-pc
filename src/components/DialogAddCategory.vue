@@ -24,9 +24,10 @@
 <script>
 import { reactive, ref, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
-import axios from '@/utils/axios'
-import { hasEmoji } from '@/utils/index'
 import { ElMessage } from 'element-plus'
+import { hasEmoji } from '@/utils/index'
+// import axios from '@/utils/axios'
+
 export default {
   name: 'DialogAddCategory',
   props: {

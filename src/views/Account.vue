@@ -32,9 +32,10 @@
 
 <script>
 import { onMounted, reactive, ref, toRefs } from 'vue'
-import axios from '@/utils/axios'
 import { ElMessage } from 'element-plus'
 import md5 from 'js-md5'
+// import axios from '@/utils/axios'
+
 export default {
   name: 'Account',
   setup() {
