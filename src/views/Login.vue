@@ -30,15 +30,19 @@
 
 <script>
 import md5 from 'js-md5'
-import { reactive, ref, toRefs } from 'vue'
+import { reactive, ref, toRefs, getCurrentInstance } from 'vue'
 import { ElMessage } from 'element-plus'
 import { localSet } from '@/utils'
-import { goodList } from '@/api/goodlist'
-import { userLogin } from '@/api/user'
+// import { userLogin, goodList } from '@/api/goodlist'
+import { userLogin, goodList } from '@/api/user'
 
 export default {
   name: 'Login',
   setup() {
+    // getCurrentInstance代表全局上下文，ctx相当于Vue2的this,
+    // 但是特别注意ctx代替this只适用于开发阶段，等你放到服务器上运行就会出错，
+    // 后来查阅资料说的得用proxy替代ctx，才能在项目正式上线版本正常运行
+    let { ctx, proxy } = getCurrentInstance()
     const loginForm = ref(null)
     const state = reactive({
       ruleForm: {
@@ -55,31 +59,6 @@ export default {
         ]
       }
     })
-    // const submitForm = async () => {
-    //   loginForm.value.validate((valid) => {
-    //     if (valid) {
-    //       axios.post('/users/login', {
-    //         email: state.ruleForm.email || '',
-    //         // passwordMd5: md5(state.ruleForm.password)
-    //         password: state.ruleForm.password
-    //       }).then(res => {
-    //         console.log(res)
-    //         localSet('token', res.token)
-    //         window.location.href = '/'
-    //       }).catch((err) => {
-		// 	      console.log(err)
-    //         if(err.email){
-    //           ElMessage.error(err.email)
-    //         }else if(err.password){
-    //           ElMessage.error(err.password)
-    //         }
-		//       });
-    //     } else {
-    //       // console.log('error submit!!')
-    //       return ElMessage.error('请输入账号和密码')
-    //     }
-    //   })
-    // }
     const submitForm = async () => {
       loginForm.value.validate(async (valid) => {
         if (valid) {
@@ -89,7 +68,6 @@ export default {
               password: state.ruleForm.password
             }
             let res = await userLogin(data)
-            console.log(res);
             if(res.code == 200){
               localSet('token', res.token)
               window.location.href = '/'
@@ -97,7 +75,7 @@ export default {
               ElMessage.error(res.email || res.password)
             }
           } catch (error) {
-            console.log(error);
+            console.log(error)
           }
         } else {
           return ElMessage.error('请输入账号和密码')
@@ -105,15 +83,25 @@ export default {
       })
     }
     const resetForm = () => {
-      loginForm.value.resetFields();
+      loginForm.value.resetFields()
     }
     const getGoodlist = async () => {
+      // 1、封装接口方法请求接口
       let params = {
         page: 1,
         limit: 10
       }
       let res = await goodList(params)
       console.log(res);
+
+      // // 2、全局api方法请求接口
+      // console.log(proxy.$api);
+      // proxy.$api.login.goodList('/api/goodlist/info',{
+      //   page: 1,
+      //   limit: 10
+      // }).then((res) => {
+      //   console.log(res)
+      // })
     }
     return {
       ...toRefs(state),

@@ -12,8 +12,8 @@ import '../theme/index.css'
 
 const app = createApp(App)
 
-// import api from './api/index';  // 全局使用接口
-// app.prototype.$api = api;
+import api from './api/index';  // 全局使用接口
+app.config.globalProperties.$api = api
 
 // const orderStatus = {
 //   0: '待支付',

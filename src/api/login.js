@@ -1,4 +1,4 @@
-import { http } from "../utils/request";
+import { http } from "../utils/http";
 
 export default {
   userLogin(data) {
@@ -7,5 +7,14 @@ export default {
       url: "/api/users/login",
       data: data
     });
+  },
+  
+  // 商品列表
+  goodList(params) {
+    return http.request({
+      method: 'get',
+      url: '/api/goodlist/info',
+      params
+    })
   }
 }

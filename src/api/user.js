@@ -9,6 +9,7 @@ export function userLogin(data) {
   });
 }
 
+// 用户信息
 export function userInfo(params) {
   return request({
     method: "get",
@@ -16,3 +17,14 @@ export function userInfo(params) {
     params
   });
 }
+
+// 商品列表
+export function goodList(params) {
+  return request({
+    method: 'get',
+    url: '/api/goodlist/info',
+    params
+  })
+}
+
+
