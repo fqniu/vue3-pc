@@ -7,14 +7,14 @@
     <div class="right">
       <el-popover
         placement="bottom"
-        :width="320"
+        
         trigger="click"
         popper-class="popper-user-box"
       >
         <template #reference>
           <div class="author">
             <i class="icon el-icon-s-custom" />
-            {{ (userInfo && userInfo.nickName) || '' }}
+            {{ (userInfo && userInfo.name) || '' }}
             <i class="el-icon-caret-bottom" />
           </div>
         </template>
@@ -122,25 +122,20 @@ export default {
 </style>
 
 <style>
-/* .popper-user-box {
-  width: 100px !important;
-  height: 100px !important;
-  background: #ccc;
-  background-size: cover !important;
-  border-radius: 0 !important;
+.popper-user-box {
+  width: 220px !important;
+}
+.popper-user-box .nickname {
+  width: 200px;
   font-size: 14px;
   color: #000;
-} */
-.popper-user-box .nickname {
-  position: relative;
-  color: #000;
-  background: #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 5px #ddd;
   padding: 10px;
 }
 .popper-user-box .nickname .logout {
-  /* position: absolute;
-  right: 0;
-  top: 0; */
+  width: 100%;
   cursor: pointer;
+  text-align: center;
 }
 </style>
