@@ -133,7 +133,7 @@ export default {
       //   }
       // }
     })
-    let instance
+    // let instance
     // onMounted(() => {
     //   instance = new WangEditor(editor.value)
     //   instance.config.showLinkImg = false

@@ -27,18 +27,42 @@
           <div class="item">60%</div>
         </el-card>
       </div>
-      <div id="zoom"></div>
+
+      <div>父组件控制子组件加减1</div>
+      <el-button type="primary" @click="add">加1</el-button>
+      <el-button type="primary" @click="subtract">减1</el-button>
+      <ChildrenCom :count="count" />
+     
+
+      <div>子组件控制父组件加减1</div>
+      <div>父组件：{{count}}</div>
+      <ChildrenCom :count="count" @add="add" @subtract="subtract" />
+
+      <!-- <div id="zoom"></div> -->
     </el-card>
   </div>
 </template>
 
 <script>
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, reactive, toRefs } from 'vue'
+import ChildrenCom from '@/views/components/ChildrenCom.vue'
 
 let myChart = null
 export default {
   name: 'Index',
+  components:{
+    ChildrenCom
+  },
   setup() {
+    const state = reactive({
+      count: 0
+    })
+    const add = () => {
+      state.count++
+    }
+    const subtract = () => {
+      state.count--
+    }
     // onMounted(() => {
     //   if (window.echarts) {
     //     // 基于准备好的dom，初始化echarts实例
@@ -147,6 +171,11 @@ export default {
     // onUnmounted(() => {
     //   myChart.dispose()
     // })
+    return {
+      ...toRefs(state),
+      add,
+      subtract
+    }
   }
 }
 </script>
