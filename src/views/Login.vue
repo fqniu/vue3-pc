@@ -32,7 +32,7 @@
 import md5 from 'js-md5'
 import { reactive, ref, toRefs, getCurrentInstance } from 'vue'
 import { ElMessage } from 'element-plus'
-import { localSet } from '@/utils'
+import { localSet , localRemove} from '@/utils'
 // import { userLogin, goodList } from '@/api/goodlist'
 import { userLogin, goodList } from '@/api/user'
 
@@ -76,6 +76,9 @@ export default {
             }
           } catch (error) {
             console.log(error)
+            if(error.response.code == 401){
+              localRemove('token')
+            }
           }
         } else {
           return ElMessage.error('请输入账号和密码')
