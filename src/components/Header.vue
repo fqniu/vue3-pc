@@ -67,7 +67,11 @@ export default {
           ElMessage.error('接口报错，请稍后重试')
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error, error.response);
+        if(error.response.status == '401'){
+          localRemove('token')
+          router.push('/login')
+        }
       }
     }
     const logout = () => {

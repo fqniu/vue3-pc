@@ -31,6 +31,7 @@
 <script>
 import md5 from 'js-md5'
 import { reactive, ref, toRefs, getCurrentInstance } from 'vue'
+import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { localSet , localRemove} from '@/utils'
 // import { userLogin, goodList } from '@/api/goodlist'
@@ -44,6 +45,7 @@ export default {
     // 后来查阅资料说的得用proxy替代ctx，才能在项目正式上线版本正常运行
     let { ctx, proxy } = getCurrentInstance()
     const loginForm = ref(null)
+    const router = useRouter()
     const state = reactive({
       ruleForm: {
         email: 'fqniu17@163.com',
@@ -76,9 +78,6 @@ export default {
             }
           } catch (error) {
             console.log(error)
-            if(error.response.code == 401){
-              localRemove('token')
-            }
           }
         } else {
           return ElMessage.error('请输入账号和密码')
